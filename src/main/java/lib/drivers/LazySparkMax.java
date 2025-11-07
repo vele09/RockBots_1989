@@ -1,4 +1,4 @@
-package com.team3478.lib.drivers;
+package lib.drivers;
 
 import com.revrobotics.REVLibError;
 import com.revrobotics.spark.SparkMax;

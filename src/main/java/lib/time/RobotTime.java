@@ -1,4 +1,4 @@
-package com.team3478.lib.time;
+package lib.time;
 
 import org.littletonrobotics.junction.Logger;
 

@@ -1,4 +1,5 @@
-package com.team3478.lib.util;
+package lib.util;
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // Description: Clase para hacer los calculos de la fisca de un motor.

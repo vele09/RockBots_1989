@@ -1,4 +1,5 @@
-package com.team3478.lib.util;
+package lib.util;
+
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;

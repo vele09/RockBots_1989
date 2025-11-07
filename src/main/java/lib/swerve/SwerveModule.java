@@ -1,4 +1,4 @@
-package com.team3478.lib.swerve;
+package lib.swerve;
 
 import com.ctre.phoenix6.BaseStatusSignal;
 import com.ctre.phoenix6.configs.*;
@@ -7,16 +7,14 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 import com.ctre.phoenix6.signals.SensorDirectionValue;
-import com.team3478.frc2025.Constants;
-import com.team3478.lib.drivers.TalonUtil;
+import frc.robot.Constants;
+import lib.drivers.TalonUtil;
 
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 
-/**
- * Swerve Module class that encapsulates a swerve module.
- */
+
 public class SwerveModule {
    
     private final TalonFX driveMotor;

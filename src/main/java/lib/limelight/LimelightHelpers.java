@@ -1,6 +1,6 @@
 //LimelightHelpers v1.6 (April 9, 2024)
 
-package com.team3478.lib.limelight;
+package lib.limelight;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
