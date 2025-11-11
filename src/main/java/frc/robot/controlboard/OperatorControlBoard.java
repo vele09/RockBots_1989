@@ -1,4 +1,4 @@
-package com.team3478.frc2025.controlboard;
+package frc.robot.controlboard;
 
 ///////////////////////////////////////////////////////////////////////////////
 // Description: Clase con las funciones para leer los botones y sticks del control del operador.
@@ -6,7 +6,7 @@ package com.team3478.frc2025.controlboard;
 // Notes: na
 ///////////////////////////////////////////////////////////////////////////////
 
-import com.team3478.frc2025.Constants;
+import frc.robot.Constants;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
@@ -24,7 +24,7 @@ public class OperatorControlBoard implements IOperatorControlBoard {
   private final CommandXboxController mController;
 
   private OperatorControlBoard() {
-    mController = new CommandXboxController(Constants.ControlBoard.kOperatorControlPort);
+    mController = new CommandXboxController(Constants.OperatorConstants.kOperatorControlPort);
   }
 
   @Override

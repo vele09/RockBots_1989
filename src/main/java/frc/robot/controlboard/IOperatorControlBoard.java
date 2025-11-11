@@ -1,4 +1,4 @@
-package com.team3478.frc2025.controlboard;
+package frc.robot.controlboard;
 
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 

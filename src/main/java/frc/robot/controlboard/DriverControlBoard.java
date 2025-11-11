@@ -1,4 +1,4 @@
-package com.team3478.frc2025.controlboard;
+package frc.robot.controlboard;
 
 ///////////////////////////////////////////////////////////////////////////////
 // Description: Clase con las funciones para leer los botones y sticks del control del driver.
@@ -6,7 +6,7 @@ package com.team3478.frc2025.controlboard;
 // Notes: na
 ///////////////////////////////////////////////////////////////////////////////
 
-import com.team3478.frc2025.Constants;
+import frc.robot.Constants;
 
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -25,7 +25,7 @@ public class DriverControlBoard implements IDriverControlBoard {
   private final CommandXboxController mController;
 
   private DriverControlBoard() {
-    mController = new CommandXboxController(Constants.ControlBoard.kDriverControlPort);
+    mController = new CommandXboxController(Constants.OperatorConstants.kDriverControlPort);
   }
 
   @Override
