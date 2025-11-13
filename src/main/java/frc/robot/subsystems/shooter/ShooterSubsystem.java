@@ -17,6 +17,7 @@ public class ShooterSubsystem extends SubsystemBase {
             io.writeOutputs(0);
         })
         .withName("Shooter RunWheelsUnsafeCommand");
-    }
+        
+    }//agregar una funcón que mueva las ruedas ¿Como) No se :(
     
 }
