@@ -172,87 +172,16 @@ public final class Constants {
 }
   
 
-public static class Straightnator{
+public static class Shooter{
   // ids de los motores
-  public static final int kStraightnatorLeftMotorID = 15;
-  public static final int kStraightnatorRightMotorID = 16;
-  // limite de corriente
-  public static final double kStraightnatorMotorCurrentLimit = 80;
-  // Porcentajes para comer
-  public static final double kEatPercentage = .7;
-  public static final double kSlowPercentage = .4;
-  public static final double kEjectPercentage = 0.5;
-  // Sensores ToF ids
-  public static final int kStraightnatorSensorStraightID = 1;
-  public static final int kStraightnatorSensorFrontID = 4;
-  public static final int kStraightnatorSensorBackID = 3;
-  // Limites de los sensores ToF para determinar detección (mm)
-  public static final double kSensorLimitStraightnator = 50;
-  public static final double kSensorLimitFront = 70;
-  public static final double kSensorLimitBack = 70;
+  public static final int kShooterLowMotorID = 15;
+  public static final int kShooterUpperMotorID = 16;
 }
+
 
   
   public static class Gripper {
-    // Gripper motor Ids
-    public static final int kArmMotorID = 12;
-    public static final int kGripperMotorID = 13;
-    // TOF sensors ids
-    public static final int kGripperSensorID = 2;
-    // Cancoder id
-    public static final int kArmEncoderID = 5;
-    // Motors current limits
-    public static final double kArmMotorCurrentLimit = 60;
-    public static final int kGripperMotorCurrentLimit = 60;
-    // Constantes para el PID del Elevator
-    public static final double kMotionProfileP= 0.021;
-    public static final double kMotionProfileI = 0;
-    public static final double kMotionProfileD = 0;
-    public static final double kMotionProfileMaxAccelerationForward=700; //700
-    public static final double kMotionProfileMaxVelocityForward= 400; //350
-    public static final double kMotionProfileMaxAccelerationReverse= 700;
-    public static final double kMotionProfileMaxVelocityReverse= 400;
-    public static final double kMotionProfilePeriod = 0.020;
-    public static final double kGripperFFKs= 0.01;
-    public static final double kGripperFFKg= 0.066;
-    public static final double kGripperFFKv= 0.0001;
-    public static final double kGripperSpring= 0.002;
-    // Cancoder angle offset
-    public static final double kArmEncoderOffset = -102.3;
-    // Turning angle kinematics limits
-    public static final double kArmReverseKinematicLimit = -25;
-    public static final double kArmForwardKinematicLimit = 25;
-    // Angle tolerance to know if at position
-    public static final double kAngleTolerance = 3;
-    // Tof sensors limits to determine detection (mm)
-    public static final double kGripperSensorLimit = 110;
-    // Base pwm to make eat and shoot actions
-    public static final double kEatCoralPercentage = -0.6;
-    public static final double kEatAlgaePercentage = -0.35;
-    public static final double kLeaveCoralPercentage = 0.7;
-    public static final double kLeaveAlgaePercentage = 0.85;
-    // Range in which elevator put in L1 level
-    public static final double KElevatorL1Lower = -0.02;
-    public static final double KElevatorL1Upper = 0.15;
-    // Variables to limit phisic movement of Gripper
-    // IMPORTANTE: Dejar tolerancia, no poner en los angulos que el Gripper se pone
-    //             ya que puede tener algo de error y trabar
-    //// distancia donde libra el elevador el giro maximo del Gripper (arriba y abajo)
-
-    public static final double kElevatorPhysicalLimitUp = 1.15;
-    public static final double kElevatorPhysicalLimitDown = 0.15;
-
-    // //// angulo maximo donde no pega el gripper (que tanto va hacia adelante en modo coral)
-    public static final double kGripperAnglePhysicalLimitForwardCoral = 80;
-    // //// angulo maximo donde no pega el gripper (que tanto va hacia adelante en modo alga)
-    public static final double kGripperAnglePhysicalLimitForwardAlgae = 60;
-   // //// angulo maximo con elevador hasta arriba
-    public static final double kGripperAnglePhysicalLimitBackward = -120; 
-   // //// angulo maximo donde el gripper no pega con el elevador
-    public static final double kGripperAnglePhysicalLimitBackwardBeforeMax = -60;
-    public static final double kGripperAnglePhysicalLimitForwardBeforeMin = 43;
-    // tiempo para sacar la pieza en autonomo
-    public static final double kGripperAutoRelease = 0.35;
+    
   }
 
   public static class Hanger {
@@ -276,16 +205,6 @@ public static class Straightnator{
     // Error tolerance hanger mechanism in motor rotations
     public static final double kHangerTolerance = 1;
 
-    // Codigo Generado con Claude
-    // // Ramped setpoint configuration
-    // public static final double kMaxVelocity = 30.0; // rotaciones/segundo
-    // public static final double kMaxAcceleration = 50.0; // rotaciones/segundo²
-    // public static final double kSetpointTolerance = 0.5; // tolerancia para considerar alcanzado
-
-    // // Filtro de aceleración de salida PID
-    // public static final double kOutputAccelerationLimit = 2.0; // límite de cambio de salida por segundo
-    // public static final boolean kEnableRampedSetpoint = true; // habilitar rampa por defecto
-    // public static final boolean kEnableOutputFiltering = true; // habilitar filtrado de salida
   }
 
 
@@ -323,16 +242,7 @@ public static class Straightnator{
 
   }
 
-  public static class MechanismKinematics {
-    // Distance between the center of the robot and elevator
-    public static final double kDX = 0.245;
-    public static final double kDZ = 0.210;
-    // Pivot (Gripper) length
-    public static final double kL1 = 0.509;
-    public static final double kL2 = 0.108;
-    // Angle between l1 and l2
-    public static final double kAngle = -4-90;
-  }
+  
 
   public static class Leds {
     // Leds pwm port
