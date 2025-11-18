@@ -137,7 +137,7 @@ public final class Constants {
     
     // Sensores
     //public static final int KLimitSwitchChannel = 0; 
-    public static final int kTofSensorID = 5;   
+    
 
     // TOF1 configuración (sensor de pieza en la entrada)
     public static final double kTofThreshold = 500;  // Distancia en mm para detectar pieza  
@@ -176,6 +176,8 @@ public static class Shooter{
   // ids de los motores
   public static final int kShooterLowMotorID = 15;
   public static final int kShooterUpperMotorID = 16;
+  //TOF
+  public static final int kTofSensorID = 5; 
 }
 
 
