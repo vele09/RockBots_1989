@@ -14,34 +14,47 @@ import frc.robot.subsystems.intake.IntakeSubsystem;
 
 
 public class RobotContainer {
+
+  //Llaman los subsistemas
   private final IntakeSubsystem intakeSubsystem = buildIntakeSubsystem();
   
   private final ControlBoard controlBoard;
 
   
-  public RobotContainer() {
+  public RobotContainer() { //Constructor
     // Configure the trigger bindings
     controlBoard = ControlBoard.getInstance();
 
     configureBindings();
   }
+ //Funciones para crear los subsistemas
+  private IntakeSubsystem buildIntakeSubsystem() {
+    if (RobotBase.isSimulation()){
+      return new IntakeSubsystem(new IntakeIOSim, this);
+    } else{
+      return new IntakeSubsystem(new IntakeIOHardware(), this);
+    }
 
+    public IntakeSubsystem getIntakeSubsystem() {
+      return intakeSubsystem;
+  }
   
   private void configureBindings() {
     
+    intakeSubsystem.setDefaultCommand(
+      intakeSubsystem.controlLoopCommand() //No estoy segura si esto va asi :(
+    );
 
       controlBoard.driverLeftBumper().whileTrue(
         intakeSubsystem.runWheelsUnsafeCommand().withName("driver_EatPiece")
 
-
-
   );
+
+  
     
   }
 
-  private IntakeSubsystem buildIntakeSubsystem() {
-      return new IntakeSubsystem();
-  }
+  
 
 
   

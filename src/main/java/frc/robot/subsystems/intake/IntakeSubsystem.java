@@ -25,6 +25,19 @@ public class IntakeSubsystem extends SubsystemBase {
         .withName("Intake RunWheelsUnsafeCommand");
     }
 
+    public void intakeControlLoop(){
+        //Va lo de checar sensores y asi
+        //Seguridades
+    }
+
+    public Command controlLoopCommand (){   //Esto se repite en cada código
+        return run(() -> intakeControlLoop())
+        .finallyDo (interrupted -> {
+            io.writeOutputs(0); 
+        })
+        .withName("Intake ControlLoopCommand");
+    }
+
     //agregar una funcón que mueva las ruedas ¿Como) No se :(
 
 }
