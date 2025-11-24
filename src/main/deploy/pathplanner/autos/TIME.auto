@@ -1,0 +1,49 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StartToStorage"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StorageToPiece1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Piece1ToStorage"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StorageToPiece2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Piece2ToStorage"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StorageToRecordLabel"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}

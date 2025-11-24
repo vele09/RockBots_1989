@@ -3,7 +3,7 @@ package frc.robot;
 import frc.robot.controlboard.ControlBoard;
 
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.commands.Autos;
+import frc.robot.commands.autocommands.DoNothingAuto;
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -30,10 +30,11 @@ public class RobotContainer {
  //Funciones para crear los subsistemas
   private IntakeSubsystem buildIntakeSubsystem() {
     if (RobotBase.isSimulation()){
-      return new IntakeSubsystem(new IntakeIOSim, this);
+      return new IntakeSubsystem(new IntakeIOSim(), this);
     } else{
       return new IntakeSubsystem(new IntakeIOHardware(), this);
     }
+  }
 
     public IntakeSubsystem getIntakeSubsystem() {
       return intakeSubsystem;
@@ -50,12 +51,9 @@ public class RobotContainer {
 
   );
 
-  
-    
+
+
   }
 
-  
-
-
-  
 }
+
