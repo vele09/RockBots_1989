@@ -8,8 +8,9 @@ public interface ShooterIO {
 
     class ShooterInputs {
         public double speed;
+    }
 
-        // Leer entradas del robot real
+    // Leer entradas del robot real
     default void readInputs(ShooterInputs inputs) {}
 
     // Actualizar inputs en simulación
@@ -17,12 +18,7 @@ public interface ShooterIO {
 
     // Escribir outputs a los motores
     default void writeOutputs(double output) {}
-
-
-    
 }
-
-    }
 
     
     

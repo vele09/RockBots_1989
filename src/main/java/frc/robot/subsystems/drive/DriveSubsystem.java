@@ -220,11 +220,11 @@ public class DriveSubsystem extends SubsystemBase {
                 // Check odometry to set leds states
                 if(Util.isBlueAllience()){
                     if(odometry.getEstimatedPosition().getTranslation().getX()>7.7 && odometry.getEstimatedPosition().getTranslation().getX()<8){
-                        container.getLedsSubsystem().setColor(Section.Left,Colors.Purple);
+                        // container.getLedsSubsystem().setColor(Section.Left,Colors.Purple);
                     }
                 }else{
                     if(odometry.getEstimatedPosition().getTranslation().getX()>9.55 && odometry.getEstimatedPosition().getTranslation().getX()<9.85){
-                        container.getLedsSubsystem().setColor(Section.Left,Colors.Purple);
+                        // container.getLedsSubsystem().setColor(Section.Left,Colors.Purple);
                     }
                 }
             })
@@ -481,7 +481,7 @@ public class DriveSubsystem extends SubsystemBase {
     public Command alignToReef(Position position, int zone, BooleanSupplier interrupt){
         AlignToReefContext context = new AlignToReefContext();
         return runOnce(() -> {
-            container.getLedsSubsystem().setColor(Section.Edges,Colors.Red);
+            // container.getLedsSubsystem().setColor(Section.Edges,Colors.Red);
             // Get y offset
             context.yOffset = 0.55; 
             // Get x offset
@@ -522,9 +522,9 @@ public class DriveSubsystem extends SubsystemBase {
         ).until(interrupt)
         .finallyDo((interrupted) -> {
             if(!pidDrive.finishedCorrectly()){
-                container.getLedsSubsystem().setColor(Section.Edges,Colors.Yellow);
+                // container.getLedsSubsystem().setColor(Section.Edges,Colors.Yellow);
             }else{
-                container.getLedsSubsystem().setColor(Section.Edges,Colors.Green);
+                // container.getLedsSubsystem().setColor(Section.Edges,Colors.Green);
             }
             stopDrive();
         });

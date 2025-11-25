@@ -20,8 +20,8 @@ public class ShooterIOHardware implements ShooterIO {
         up_motor = new SparkMax(Constants.Shooter.kShooterUpperMotorID, MotorType.kBrushless);
 
         //TOF
-        tofSensor = new TimeOfFlight(Constants.Shooter.kTofSensorID);
-        tofSensor.setRangingMode(RangingMode.Short, 24);
+        // tofSensor = new TimeOfFlight(Constants.Shooter.kTofSensorID);
+        // tofSensor.setRangingMode(RangingMode.Short, 24);
 
     }
 
