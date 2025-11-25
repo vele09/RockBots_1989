@@ -8,12 +8,16 @@ import frc.robot.subsystems.intake.IntakeIOHardware;
 
 public class ShooterSubsystem extends SubsystemBase {
 
-     private ShooterIO io;
+    private ShooterIO io;
     private RobotContainer container;
 
     public ShooterSubsystem (final ShooterIO io,final RobotContainer container) {
         this.io = io;
         this.container = container;
+    }
+
+    public void setShooterSpeed(double speed) {
+        io.writeOutputs(speed); // aquí dentro ShooterIO pone los dos motores a esa velocidad
     }
 
 
@@ -26,10 +30,31 @@ public class ShooterSubsystem extends SubsystemBase {
             io.writeOutputs(0);
         })
         .withName("Shooter RunWheelsUnsafeCommand");
+
+
+        private boolean hasPieceInShooter() {
+            var intake = container.getIntakeSubsystem();
+            if (intake == null) return false;
         
-    }
-    //
-    //agregar una funcón que mueva las ruedas ¿Como) No se :(
+            
+            return intake.hasGamePiece();
+        }
+        
+
+
+
+        public Command shootWhenPieceDetectedCommand() {
+            return run(() -> {
+                if (hasPieceInShooter()) {
+                    setShooterSpeed(0.6);
+                } else {
+                    setShooterSpeed(0.0);
+                }
+            }).finallyDo(interrupted -> {
+                setShooterSpeed(0.0);
+            }).withName("Shooter ShootWhenPieceDetected");
+        }
+        
 
     
 }
