@@ -94,6 +94,7 @@ public final class Constants {
 
   // Constants for the vision subsystem
   public static class Vision {
+    public static final String Back   = "limelight-back";
     public static final String FrontR = "limelight-frontr";
     public static final String FrontL = "limelight-frontl";
   }
