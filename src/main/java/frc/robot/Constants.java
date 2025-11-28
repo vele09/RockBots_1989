@@ -178,7 +178,8 @@ public static class Shooter{
   public static final int kShooterLowMotorID = 15;
   public static final int kShooterUpperMotorID = 16;
   //TOF
-  public static final int kTofSensorID = 5; 
+  public static final int kTofSensorID = 5;
+  public static final int kShooterSensor1ID = 0; 
 }
 
 

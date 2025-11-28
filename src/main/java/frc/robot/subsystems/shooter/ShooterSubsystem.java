@@ -29,7 +29,9 @@ public class ShooterSubsystem extends SubsystemBase {
         
     }
     //
-    //agregar una funcón que mueva las ruedas ¿Como) No se :(
+    //agregar una función que mueva las ruedas ¿Como) No se :(
+
+    
 
     
 }
