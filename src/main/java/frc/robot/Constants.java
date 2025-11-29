@@ -94,6 +94,7 @@ public final class Constants {
 
   // Constants for the vision subsystem
   public static class Vision {
+    public static final String Back   = "limelight-back";
     public static final String FrontR = "limelight-frontr";
     public static final String FrontL = "limelight-frontl";
   }
@@ -177,14 +178,14 @@ public static class Shooter{
   public static final int kShooterLowMotorID = 15;
   public static final int kShooterUpperMotorID = 16;
   //TOF
-<<<<<<< Updated upstream
-  public static final int kTofSensorID = 5; 
-=======
   public static final int kTofSensorID = 5;
   public static final int kShooterSensor1ID = 0; 
 
   public static final double kTofThreshold = 50;
->>>>>>> Stashed changes
+
+  public static final int kTofSensorID = 5;
+  public static final int kShooterSensor1ID = 0; 
+
 }
 
 

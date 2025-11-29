@@ -23,12 +23,6 @@ public class ShooterSubsystem extends SubsystemBase {
         this.container = container;
     }
 
-<<<<<<< Updated upstream
-    public void setShooterSpeed(double speed) {
-        io.writeOutputs(speed); // aquí dentro ShooterIO pone los dos motores a esa velocidad
-    }
-
-=======
       @Override
     public void periodic() {
         UpdateSmartDashboard();
@@ -42,7 +36,6 @@ public class ShooterSubsystem extends SubsystemBase {
         
     }   
 
->>>>>>> Stashed changes
 
     public Command ShooterRun() {
         return run(() -> {
@@ -53,43 +46,8 @@ public class ShooterSubsystem extends SubsystemBase {
             io.writeOutputs(0);
         })
         .withName("Shooter RunWheelsUnsafeCommand");
-<<<<<<< Updated upstream
-
-
-        private boolean hasPieceInShooter() {
-            var intake = container.getIntakeSubsystem();
-            if (intake == null) return false;
         
-            
-            return intake.hasGamePiece();
-        }
         
-
-
-
-        public Command shootWhenPieceDetectedCommand() {
-            return run(() -> {
-                if (hasPieceInShooter()) {
-                    setShooterSpeed(0.6);
-                } else {
-                    setShooterSpeed(0.0);
-                }
-            }).finallyDo(interrupted -> {
-                setShooterSpeed(0.0);
-            }).withName("Shooter ShootWhenPieceDetected");
-        }
-        
-=======
-        
-    }
-
-    public Command controlLoopCommand(BooleanSupplier shoot, BooleanSupplier leave){
-        return run(()->{
-            Disparar(shoot.getAsBoolean(), leave.getAsBoolean());
-            shooterControlLoop();
-        });
-    }
-    //
     public void Disparar(boolean shoot, boolean leave) {
         boolean pieceReady = io.pieceReady();
         if(pieceReady && shoot){
@@ -111,7 +69,7 @@ public class ShooterSubsystem extends SubsystemBase {
         SmartDashboard.putBoolean("ShooterTOF", io.pieceReady());
 }
     
->>>>>>> Stashed changes
+
 
     
 }

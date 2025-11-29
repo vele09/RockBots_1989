@@ -7,7 +7,7 @@ package frc.robot.subsystems.drive;
 ///////////////////////////////////////////////////////////////////////////////
 
 import com.ctre.phoenix6.BaseStatusSignal;
-import com.ctre.phoenix6.hardware.Pigeon2;
+import com.studica.frc.AHRS;
 import frc.robot.Constants;
 import lib.swerve.SwerveModule;
 import lib.util.Util;
@@ -17,8 +17,9 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class DriveIOHardware implements DriveIO { 
 
-    //Pigeon sensor
-    Pigeon2 pigeon = null;
+    //Navx sensor
+    private AHRS navx;
+
     BaseStatusSignal yawAngle;
     BaseStatusSignal yawAngleRate;
     // Aqui se declaran los modulos de swerve
@@ -27,10 +28,14 @@ public class DriveIOHardware implements DriveIO {
     // Class constructor
     public DriveIOHardware(){
         // Init Pigeon sensor and reset
-        pigeon = new Pigeon2(Constants.Drive.kPigeonID,"canivore");
-        pigeon.reset();
-        yawAngle = pigeon.getYaw();
-        yawAngleRate = pigeon.getAngularVelocityZWorld();
+        try {
+            navx = new AHRS(AHRS.NavXComType.kMXP_SPI, (byte) 50); // cambiando a 100 hertz el update time
+            Timer.delay(0.5);
+            navx.reset();
+            Timer.delay(0.5);
+          } catch (Exception e) {
+            System.out.print("navx not working");
+      }
         // Init swerve modules
         frModule = new SwerveModule(Constants.Drive.kFrontRightDriveMotorID, 
                                     Constants.Drive.kFrontRightSteeringMotorID, 
@@ -65,8 +70,10 @@ public class DriveIOHardware implements DriveIO {
             inputs.deltaTime = tempTime - inputs.timestamp;
         }
         inputs.timestamp = tempTime;
-        // Get pigeon angles (este es acumulativo)
-        inputs.yawAngle = yawAngle.getValueAsDouble();
+        // Get navx angles (este es acumulativo)
+        inputs.yawAngle = navx.getAngle() * -1;
+        inputs.yawAngleRate = navx.getRate();
+        
         // Ajuste de angulo porque iniciamos volteados en el lado azul (contra el 0,0 en el lado azul)
         if(Util.isBlueAllience()){
             inputs.yawAngle = inputs.yawAngle + 180;

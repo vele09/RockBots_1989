@@ -11,13 +11,18 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.subsystems.intake.IntakeIOHardware;
 import frc.robot.subsystems.intake.IntakeIOSim;
 import frc.robot.subsystems.intake.IntakeSubsystem;
+import frc.robot.subsystems.drive.DriveSubsystem;
+import frc.robot.subsystems.drive.DriveIO;
+import frc.robot.subsystems.drive.DriveIOHardware;
+import frc.robot.subsystems.drive.DriveIOSim;
 
 
 public class RobotContainer {
 
   //Llaman los subsistemas
+  private final DriveSubsystem driveSubsystem = buildDriveSubsystem();
   private final IntakeSubsystem intakeSubsystem = buildIntakeSubsystem();
-  
+
   private final ControlBoard controlBoard;
 
   
@@ -28,27 +33,48 @@ public class RobotContainer {
     configureBindings();
   }
  //Funciones para crear los subsistemas
+  private DriveSubsystem buildDriveSubsystem() {
+    if (RobotBase.isSimulation()){
+      return new DriveSubsystem(new DriveIOSim(), this);
+    } else{
+      return new DriveSubsystem(new DriveIOHardware(), this);
+    }
+  }
+
   private IntakeSubsystem buildIntakeSubsystem() {
     if (RobotBase.isSimulation()){
-      return new IntakeSubsystem(new IntakeIOSim, this);
+      return new IntakeSubsystem(new IntakeIOSim(), this);
     } else{
       return new IntakeSubsystem(new IntakeIOHardware(), this);
     }
+  }
 
-    public IntakeSubsystem getIntakeSubsystem() {
-      return intakeSubsystem;
+  public DriveSubsystem getDriveSubsystem() {
+    return driveSubsystem;
+  }
+
+  public IntakeSubsystem getIntakeSubsystem() {
+    return intakeSubsystem;
   }
   
   private void configureBindings() {
-    
+
+    // Configurar comando por defecto del drive
+    driveSubsystem.setDefaultCommand(
+      driveSubsystem.startMainDrive(
+        controlBoard::driverLeftStickY,
+        controlBoard::driverLeftStickX,
+        controlBoard::driverRightStickX
+      )
+    );
+
     intakeSubsystem.setDefaultCommand(
       intakeSubsystem.controlLoopCommand() //No estoy segura si esto va asi :(
     );
 
-      controlBoard.driverLeftBumper().whileTrue(
-        intakeSubsystem.runWheelsUnsafeCommand().withName("driver_EatPiece")
-
-  );
+    controlBoard.driverLeftBumper().whileTrue(
+      intakeSubsystem.runWheelsUnsafeCommand().withName("driver_EatPiece")
+    );
 
   
     
