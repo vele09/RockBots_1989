@@ -18,6 +18,10 @@ public interface ShooterIO {
 
     // Escribir outputs a los motores
     default void writeOutputs(double output) {}
+    double getTofDistance();
+
+    boolean pieceReady();
+ 
 }
 
     

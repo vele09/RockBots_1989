@@ -180,13 +180,16 @@ public static class Shooter{
   //TOF
   public static final int kTofSensorID = 5;
   public static final int kShooterSensor1ID = 0; 
+
+  public static final double kTofThreshold = 50;
+
+  public static final int kTofSensorID = 5;
+  public static final int kShooterSensor1ID = 0; 
+
 }
 
 
   
-  public static class Gripper {
-    
-  }
 
   public static class Hanger {
     // Hanger motors Ids
