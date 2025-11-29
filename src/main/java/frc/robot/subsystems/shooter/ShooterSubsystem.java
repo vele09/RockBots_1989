@@ -30,10 +30,7 @@ public class ShooterSubsystem extends SubsystemBase {
     }
 
     public void shooterControlLoop(){
-        //Va lo de checar sensores y asi
-        //Seguridades
-
-        
+        //NO se necesita algo aqui
     }   
 
 
@@ -46,6 +43,7 @@ public class ShooterSubsystem extends SubsystemBase {
             io.writeOutputs(0);
         })
         .withName("Shooter RunWheelsUnsafeCommand");
+        }
         
         
     public void Disparar(boolean shoot, boolean leave) {

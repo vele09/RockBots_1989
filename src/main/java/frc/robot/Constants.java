@@ -173,20 +173,17 @@ public final class Constants {
 }
   
 
-public static class Shooter{
-  // ids de los motores
-  public static final int kShooterLowMotorID = 15;
-  public static final int kShooterUpperMotorID = 16;
-  //TOF
-  public static final int kTofSensorID = 5;
-  public static final int kShooterSensor1ID = 0; 
+  public static class Shooter{
+    // ids de los motores
+    public static final int kShooterLowMotorID = 15;
+    public static final int kShooterUpperMotorID = 16;
+    //TOF
+    public static final int kTofSensorID = 5;
+    public static final int kShooterSensor1ID = 0; 
 
-  public static final double kTofThreshold = 50;
+    public static final double kTofThreshold = 50;
 
-  public static final int kTofSensorID = 5;
-  public static final int kShooterSensor1ID = 0; 
-
-}
+  }
 
 
   

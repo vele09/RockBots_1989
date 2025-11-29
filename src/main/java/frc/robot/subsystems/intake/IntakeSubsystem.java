@@ -26,8 +26,7 @@ public class IntakeSubsystem extends SubsystemBase {
     }
 
     public void intakeControlLoop(){
-        //Va lo de checar sensores y asi
-        //Seguridades
+        //NO se necesita nada
     }
 
     public Command controlLoopCommand (){   //Esto se repite en cada código
@@ -43,9 +42,7 @@ public class IntakeSubsystem extends SubsystemBase {
         .finallyDo(interrupted -> {
             io.writeOutputs(0); } );
         }
-    
 
-    //agregar una funcón que mueva las ruedas ¿Como) No se :(
         public void Comer(double Trigger) {
             io.writeOutputs(Trigger); //Con que boton o que sea fija
         }
