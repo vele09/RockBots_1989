@@ -38,6 +38,18 @@ public class IntakeSubsystem extends SubsystemBase {
         .withName("Intake ControlLoopCommand");
     }
 
+    public Command comerCommand(double Trigger){
+        return runOnce(() -> Comer(Trigger))
+        .finallyDo(interrupted -> {
+            io.writeOutputs(0); } );
+        }
+    
+
     //agregar una funcón que mueva las ruedas ¿Como) No se :(
+        public void Comer(double Trigger) {
+            io.writeOutputs(Trigger); //Con que boton o que sea fija
+        }
+
+        
 
 }

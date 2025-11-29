@@ -29,4 +29,19 @@ public class ShooterIOHardware implements ShooterIO {
         low_motor.set(output);
         up_motor.set(output);
     }
+
+    @Override
+    public double getTofDistance() {
+        // Usar promedio filtrado 
+        double average = 0;
+        for (int x = 0; x < filterSize; x++) {
+            average += filterSensor1.get(x);
+        }
+        return average / filterSize;
+    }
+
+    @Override
+    public boolean pieceReady() {
+        return getTofDistance() < Constants.Shooter.kTofThreshold;
+    }
 }
