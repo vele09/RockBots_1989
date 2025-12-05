@@ -92,6 +92,10 @@ public class ControlBoard {
     return mDriverControlBoard.getRightTrigger();
   }
 
+  public double driverRightTriggerValue() {
+    return mDriverControlBoard.getRightTriggerValue();
+  }
+
   public double operatorLeftStickX() {
     return mOperatorControlBoard.getLeftStickX();
   }

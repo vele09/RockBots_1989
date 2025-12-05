@@ -53,6 +53,11 @@ public class DriverControlBoard implements IDriverControlBoard {
     return (mController.getRightTriggerAxis()-mController.getLeftTriggerAxis());
   }
 
+  @Override
+  public double getRightTriggerValue() {
+    return mController.getRightTriggerAxis();
+  }
+
 
   @Override
   public Trigger getYButton() {

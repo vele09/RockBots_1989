@@ -44,22 +44,27 @@ public class ShooterSubsystem extends SubsystemBase {
         })
         .withName("Shooter RunWheelsUnsafeCommand");
         }
-        
-        
-    public void Disparar(boolean shoot, boolean leave) {
-        boolean pieceReady = io.pieceReady();
-        if(pieceReady && shoot){
-            io.writeOutputs(0.6); //Con que boton o que sea fija
-        }
-        else if(pieceReady && leave ){
-            io.writeOutputs(0.3);
-            
-        }
-        else{
-            io.writeOutputs(0); 
-            
-        }
-    
+
+    public Command dispararRockola() {
+        return run(() -> {
+            boolean pieceReady = io.pieceReady();
+            if(pieceReady){
+                io.writeOutputs(0.6); //Con que  boton o que sea fija
+            }
+        }).finallyDo(interrupted -> {
+            io.writeOutputs(0.0);
+        });
+    }
+
+    public Command dispararTocadiscos() {
+        return run(() -> {
+            boolean pieceReady = io.pieceReady();
+            if(pieceReady){
+                io.writeOutputs(0.3); //Con que boton o que sea fija
+            }
+        }).finallyDo(interrupted -> {
+            io.writeOutputs(0.0);
+        });
     }
 
     // Dashboard - similar structure to Straightnator

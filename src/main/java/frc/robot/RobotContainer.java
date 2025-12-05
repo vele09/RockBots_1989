@@ -11,6 +11,9 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.subsystems.intake.IntakeIOHardware;
 import frc.robot.subsystems.intake.IntakeIOSim;
 import frc.robot.subsystems.intake.IntakeSubsystem;
+import frc.robot.subsystems.shooter.ShooterIOHardware;
+import frc.robot.subsystems.shooter.ShooterIOSim;
+import frc.robot.subsystems.shooter.ShooterSubsystem;
 import frc.robot.subsystems.drive.DriveSubsystem;
 import frc.robot.subsystems.drive.DriveIO;
 import frc.robot.subsystems.drive.DriveIOHardware;
@@ -22,6 +25,8 @@ public class RobotContainer {
   //Llaman los subsistemas
   private final DriveSubsystem driveSubsystem = buildDriveSubsystem();
   private final IntakeSubsystem intakeSubsystem = buildIntakeSubsystem();
+
+  private final ShooterSubsystem shooterSubsystem = buildShooterSubsystem();
 
   private final ControlBoard controlBoard;
 
@@ -49,12 +54,24 @@ public class RobotContainer {
     }
   }
 
+  private ShooterSubsystem buildShooterSubsystem() {
+    if (RobotBase.isSimulation()){
+      return new ShooterSubsystem(new ShooterIOSim(), this);
+    } else{
+      return new ShooterSubsystem(new ShooterIOHardware(), this);
+    }
+  }
+
   public DriveSubsystem getDriveSubsystem() {
     return driveSubsystem;
   }
 
   public IntakeSubsystem getIntakeSubsystem() {
     return intakeSubsystem;
+  }
+
+  public ShooterSubsystem gShooterSubsystem (){
+    return shooterSubsystem;
   }
   
   private void configureBindings() {
@@ -75,8 +92,18 @@ public class RobotContainer {
     controlBoard.driverLeftBumper().whileTrue(
       intakeSubsystem.runWheelsUnsafeCommand().withName("driver_EatPiece")
     );
+    
+    controlBoard.driverAButton().whileTrue(
+      shooterSubsystem.dispararRockola().withName("driver_ShootRockola")
+    );
 
-  
+    controlBoard.driverBButton().whileTrue(
+      shooterSubsystem.dispararTocadiscos().withName("driver_ShootTOcaDiscos")
+    );
+
+    controlBoard.driverLeftTrigger().whileTrue(
+      intakeSubsystem.comerCommand(controlBoard.driverRightTriggerValue())
+    );
     
   }
 
