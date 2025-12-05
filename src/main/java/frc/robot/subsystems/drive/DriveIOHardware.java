@@ -3,10 +3,9 @@ package frc.robot.subsystems.drive;
 ///////////////////////////////////////////////////////////////////////////////
 // Description: Clase con los metodos para administrar las salidas y entradas del subsistema usando el robot real.
 // Notes:
-//  - 
+//  -
 ///////////////////////////////////////////////////////////////////////////////
 
-import com.ctre.phoenix6.BaseStatusSignal;
 import com.studica.frc.AHRS;
 import frc.robot.Constants;
 import lib.swerve.SwerveModule;
@@ -20,14 +19,12 @@ public class DriveIOHardware implements DriveIO {
     //Navx sensor
     private AHRS navx;
 
-    BaseStatusSignal yawAngle;
-    BaseStatusSignal yawAngleRate;
     // Aqui se declaran los modulos de swerve
     private SwerveModule frModule, flModule, brModule, blModule;
  
     // Class constructor
     public DriveIOHardware(){
-        // Init Pigeon sensor and reset
+        // Init NavX sensor and reset
         try {
             navx = new AHRS(AHRS.NavXComType.kMXP_SPI, (byte) 50); // cambiando a 100 hertz el update time
             Timer.delay(0.5);
@@ -63,7 +60,6 @@ public class DriveIOHardware implements DriveIO {
         flModule.refreshSignals();
         brModule.refreshSignals();
         blModule.refreshSignals();
-        BaseStatusSignal.refreshAll(yawAngle, yawAngleRate);
         // Get delta time
         double tempTime = Timer.getFPGATimestamp();
         if(inputs.timestamp>0){
@@ -73,12 +69,11 @@ public class DriveIOHardware implements DriveIO {
         // Get navx angles (este es acumulativo)
         inputs.yawAngle = navx.getAngle() * -1;
         inputs.yawAngleRate = navx.getRate();
-        
+
         // Ajuste de angulo porque iniciamos volteados en el lado azul (contra el 0,0 en el lado azul)
         if(Util.isBlueAllience()){
             inputs.yawAngle = inputs.yawAngle + 180;
         }
-        inputs.yawAngleRate = yawAngleRate.getValueAsDouble();
         // Se leen los angulos de steering de las ruedas convirtiendo de 0 a 360 grados y aplicando el offset inicial de las ruedas.
         inputs.frSteeringPosition = (frModule.getEncoderAngle() * 360 + Constants.Drive.kFrontRightEncoderInitPos);
         inputs.flSteeringPosition = (flModule.getEncoderAngle() * 360 + Constants.Drive.kFrontLeftEncoderInitPos);
