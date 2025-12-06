@@ -65,13 +65,14 @@ public final class Constants {
     public static final double kXBackRightLocation = -0.3492;
     public static final double kYBackRightLocation = -0.333;
 
-    // Reduccion de los motores de velocidad
-    public static final double kGearDriveReduction = 1 / 6.75;
-    public static final double kGearSteeringReduction = 1 / 21.42;
+    // Reduccion de los motores para SDS MK4i L1
+    public static final double kGearDriveReduction = 1 / 8.14;      // L1: 8.14:1 (era 6.75 para L2)
+    public static final double kGearSteeringReduction = 1 / 21.43;  // 150/7 = 21.428571
     
     // Variables para el controlador PD de los motores de steering
-    public static final double kPSteeringValue = 0.006;//0.006;
-    public static final double kDSteeringValue = 0.0002;
+    // Aumentados para L1 (más inercia que L2, necesita más ganancia)
+    public static final double kPSteeringValue = 0;//.02;//0.006; (aumentado de 0.006 para reducir oscilaciones)
+    public static final double kDSteeringValue = 0;//.001;//0.0002; (aumentado para más amortiguamiento)
     // Variable limitar la deteccion del stick de giro (y evitar giros muy despacios)
     public static final double kDriveTurnDeadband = 0.1;
     // Variable para el acumulador de inercia
