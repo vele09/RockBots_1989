@@ -78,11 +78,12 @@ public final class Constants {
     public static final double kAcumulatorChange = 0.08;
     public static final double kAcumulatorAlpha = 0.1;
     // Variables para el controlador PD para ajustar el giro del robot
-    public static final double kPTurnValueBigError = 0.005;//0.0016;
+    // DESACTIVADO PARA PRUEBAS - Control manual sin asistencias
+    public static final double kPTurnValueBigError = 0.0;//0.005;//0.0016;
     public static final double kDTurnValueBigError = 0.0;
-    public static final double kPTurnValueSmallError = 0.012;//0.0018;
+    public static final double kPTurnValueSmallError = 0.0;//0.012;//0.0018;
     public static final double kDTurnValueSmallError = 0.0;
-    public static final double kPTurnValueSmallerError = 0.006;//0.0026;
+    public static final double kPTurnValueSmallerError = 0.0;//0.006;//0.0026;
     public static final double kDTurnValueSmallerError = 0;
     // PPHolonomicDriveController constants for the pathplanner
     public static final PIDConstants kTranslationConstants = new PIDConstants(5.0, 0.0, 0.0);
