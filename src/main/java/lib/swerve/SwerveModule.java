@@ -30,7 +30,8 @@ public class SwerveModule {
     private SwerveModuleState moduleState = new SwerveModuleState();
 
     // Constructor del swerve module
-    public SwerveModule(int driveMotorId, int steeringMotorId, int encoderId, String canbusName) {
+    public SwerveModule(int driveMotorId, int steeringMotorId, int encoderId, String canbusName,
+                        InvertedValue driveMotorInverted, InvertedValue steeringMotorInverted) {
         // Create hardware objects
         driveMotor = new TalonFX(driveMotorId, canbusName);
         steeringMotor = new TalonFX(steeringMotorId, canbusName);
@@ -43,7 +44,7 @@ public class SwerveModule {
         driveMotorConfigCurrent.SupplyCurrentLowerLimit = 0.2;
         driveMotorConfigCurrent.SupplyCurrentLowerLimit = 0;
         driveMotorConfig.CurrentLimits = driveMotorConfigCurrent;
-        driveMotorConfig.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
+        driveMotorConfig.MotorOutput.Inverted = driveMotorInverted;
         driveMotorConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
         TalonUtil.checkError(
             driveMotor.getConfigurator().apply(driveMotorConfig),
@@ -56,7 +57,7 @@ public class SwerveModule {
         steeringMotorConfigCurrent.SupplyCurrentLowerLimit = 0.2;
         steeringMotorConfigCurrent.SupplyCurrentLowerLimit = 0;
         steeringMotorConfig.CurrentLimits = steeringMotorConfigCurrent;
-        steeringMotorConfig.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
+        steeringMotorConfig.MotorOutput.Inverted = steeringMotorInverted;
         steeringMotorConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
         TalonUtil.checkError(
             steeringMotor.getConfigurator().apply(steeringMotorConfig),

@@ -7,6 +7,7 @@ package frc.robot.subsystems.drive;
 ///////////////////////////////////////////////////////////////////////////////
 
 import com.studica.frc.AHRS;
+import com.ctre.phoenix6.signals.InvertedValue;
 import frc.robot.Constants;
 import lib.swerve.SwerveModule;
 import lib.util.Util;
@@ -34,22 +35,34 @@ public class DriveIOHardware implements DriveIO {
             System.out.print("navx not working");
       }
         // Init swerve modules
-        frModule = new SwerveModule(Constants.Drive.kFrontRightDriveMotorID, 
-                                    Constants.Drive.kFrontRightSteeringMotorID, 
-                                    Constants.Drive.kFrontRightCANCoderID,  
-                                    "rio");
-        flModule = new SwerveModule(Constants.Drive.kFrontLeftDriveMotorID, 
-                                    Constants.Drive.kFrontLeftSteeringMotorID, 
-                                    Constants.Drive.kFrontLeftCANCoderID,  
-                                    "rio");
-        brModule = new SwerveModule(Constants.Drive.kBackRightDriveMotorID, 
-                                    Constants.Drive.kBackRightSteeringMotorID, 
-                                    Constants.Drive.kBackRightCANCoderID,  
-                                    "rio");
-        blModule = new SwerveModule(Constants.Drive.kBackLeftDriveMotorID, 
-                                    Constants.Drive.kBackLeftSteeringMotorID, 
-                                    Constants.Drive.kBackLeftCANCoderID,  
-                                    "rio");
+        // FR: Drive motor ID=1 (abajo), Steering motor ID=2 (arriba)
+        frModule = new SwerveModule(Constants.Drive.kFrontRightDriveMotorID,
+                                    Constants.Drive.kFrontRightSteeringMotorID,
+                                    Constants.Drive.kFrontRightCANCoderID,
+                                    "rio",
+                                    InvertedValue.CounterClockwise_Positive,  // Drive motor (ID 1) - abajo
+                                    InvertedValue.Clockwise_Positive);         // Steering motor (ID 2) - arriba
+        // FL: Drive motor ID=4 (arriba), Steering motor ID=3 (abajo)
+        flModule = new SwerveModule(Constants.Drive.kFrontLeftDriveMotorID,
+                                    Constants.Drive.kFrontLeftSteeringMotorID,
+                                    Constants.Drive.kFrontLeftCANCoderID,
+                                    "rio",
+                                    InvertedValue.Clockwise_Positive,          // Drive motor (ID 4) - arriba
+                                    InvertedValue.CounterClockwise_Positive);  // Steering motor (ID 3) - abajo
+        // BR: Drive motor ID=7 (arriba), Steering motor ID=8 (abajo)
+        brModule = new SwerveModule(Constants.Drive.kBackRightDriveMotorID,
+                                    Constants.Drive.kBackRightSteeringMotorID,
+                                    Constants.Drive.kBackRightCANCoderID,
+                                    "rio",
+                                    InvertedValue.Clockwise_Positive,          // Drive motor (ID 7) - arriba
+                                    InvertedValue.CounterClockwise_Positive);  // Steering motor (ID 8) - abajo
+        // BL: Drive motor ID=5 (arriba), Steering motor ID=6 (arriba)
+        blModule = new SwerveModule(Constants.Drive.kBackLeftDriveMotorID,
+                                    Constants.Drive.kBackLeftSteeringMotorID,
+                                    Constants.Drive.kBackLeftCANCoderID,
+                                    "rio",
+                                    InvertedValue.Clockwise_Positive,          // Drive motor (ID 5) - arriba
+                                    InvertedValue.Clockwise_Positive);         // Steering motor (ID 6) - arriba
     }
 
     // Funcion para leer los inputs reales del robot
