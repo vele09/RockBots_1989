@@ -103,7 +103,7 @@ public final class Constants {
   // Constants for the elevator subsystem
   public static class Hanger {
     // Elevator motor Ids
-    public static final int kElevatorMotor1ID = 10;  //Right
+    public static final int kHangerMotor1ID = 10;  //Right
     
 
   }
@@ -145,7 +145,9 @@ public final class Constants {
     public static final double kIntakeWheelsSpeed = 0.6;        
     public static final double kReduction = 56.12;
     public static final double kEscupirDurationSec = 0.8;
-    public static final double kMotorCurrentLimit = 40.0;    
+    public static final double kMotorCurrentLimit = 40.0;
+
+    public static final int kmini_NEO_ID = 42;    
 }
   
 

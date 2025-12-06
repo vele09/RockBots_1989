@@ -1,7 +1,7 @@
 package frc.robot;
 
 import frc.robot.controlboard.ControlBoard;
-
+import frc.robot.Constants.Hanger;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import edu.wpi.first.wpilibj.RobotBase;
@@ -15,6 +15,8 @@ import frc.robot.subsystems.shooter.ShooterIOHardware;
 import frc.robot.subsystems.shooter.ShooterIOSim;
 import frc.robot.subsystems.shooter.ShooterSubsystem;
 import frc.robot.subsystems.drive.DriveSubsystem;
+import frc.robot.subsystems.hanger.HangerIOHardware;
+import frc.robot.subsystems.hanger.HangerSubsystem;
 import frc.robot.subsystems.drive.DriveIO;
 import frc.robot.subsystems.drive.DriveIOHardware;
 import frc.robot.subsystems.drive.DriveIOSim;
@@ -27,6 +29,8 @@ public class RobotContainer {
   private final IntakeSubsystem intakeSubsystem = buildIntakeSubsystem();
 
   private final ShooterSubsystem shooterSubsystem = buildShooterSubsystem();
+
+  private final HangerSubsystem hangerSubsystem = buildHangerSubsytem();
 
   private final ControlBoard controlBoard;
 
@@ -62,6 +66,14 @@ public class RobotContainer {
     }
   }
 
+  private ShooterSubsystem buildHangerSubsystem() {
+    if (RobotBase.isSimulation()){
+      return new HangerSubsystem(new HangerIOSim(), this);
+    } else{
+      return new HangerSubsystem(new HangerIOHardware(), this);
+    }
+  }
+
   public DriveSubsystem getDriveSubsystem() {
     return driveSubsystem;
   }
@@ -72,6 +84,10 @@ public class RobotContainer {
 
   public ShooterSubsystem gShooterSubsystem (){
     return shooterSubsystem;
+  }
+
+  public ShooterSubsystem gHangerSubsystem (){
+    return hangerSubsystem;
   }
   
   private void configureBindings() {
@@ -85,9 +101,9 @@ public class RobotContainer {
       )
     );
 
-    intakeSubsystem.setDefaultCommand(
+    /*intakeSubsystem.setDefaultCommand(
       intakeSubsystem.controlLoopCommand() //No estoy segura si esto va asi :(
-    );
+    );*/
 
     controlBoard.driverLeftBumper().whileTrue(
       intakeSubsystem.runWheelsUnsafeCommand().withName("driver_EatPiece")
@@ -102,7 +118,15 @@ public class RobotContainer {
     );
 
     controlBoard.driverLeftTrigger().whileTrue(
-      intakeSubsystem.comerCommand(controlBoard.driverRightTriggerValue())
+      intakeSubsystem.runWheelsUnsafeCommand()
+    );
+
+    controlBoard.getPovLeft().whileTrue(
+      hangerSubsystem.runHangerCommand()
+    );
+
+    controlBoard.getPovRight().whileTrue(
+      hangerSubsystem.downHangerCommand()
     );
     
   }

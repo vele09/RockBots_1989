@@ -3,7 +3,7 @@ package frc.robot.subsystems.intake;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
-import frc.robot.subsystems.drive.DriveIO;
+
 
 public class IntakeSubsystem extends SubsystemBase {
     private IntakeIO io;
@@ -17,10 +17,12 @@ public class IntakeSubsystem extends SubsystemBase {
     public Command runWheelsUnsafeCommand() {
         return run(() -> {
             // Ruedas directas sin verificar zona segura
-            io.writeOutputs(0.1);
+            io.writeOutputs(-0.3);
+
         })
         .finallyDo(interrupted -> {
             io.writeOutputs(0);
+   
         })
         .withName("Intake RunWheelsUnsafeCommand");
     }
@@ -37,15 +39,7 @@ public class IntakeSubsystem extends SubsystemBase {
         .withName("Intake ControlLoopCommand");
     }
 
-    public Command comerCommand(double Trigger){
-        return runOnce(() -> Comer(Trigger))
-        .finallyDo(interrupted -> {
-            io.writeOutputs(0); } );
-        }
-
-        public void Comer(double Trigger) {
-            io.writeOutputs(Trigger); //Con que boton o que sea fija
-        }
+    
 
         
 
