@@ -37,19 +37,19 @@ public class DriveIOHardware implements DriveIO {
         frModule = new SwerveModule(Constants.Drive.kFrontRightDriveMotorID, 
                                     Constants.Drive.kFrontRightSteeringMotorID, 
                                     Constants.Drive.kFrontRightCANCoderID,  
-                                    "canivore");
+                                    "rio");
         flModule = new SwerveModule(Constants.Drive.kFrontLeftDriveMotorID, 
                                     Constants.Drive.kFrontLeftSteeringMotorID, 
                                     Constants.Drive.kFrontLeftCANCoderID,  
-                                    "canivore");
+                                    "rio");
         brModule = new SwerveModule(Constants.Drive.kBackRightDriveMotorID, 
                                     Constants.Drive.kBackRightSteeringMotorID, 
                                     Constants.Drive.kBackRightCANCoderID,  
-                                    "canivore");
+                                    "rio");
         blModule = new SwerveModule(Constants.Drive.kBackLeftDriveMotorID, 
                                     Constants.Drive.kBackLeftSteeringMotorID, 
                                     Constants.Drive.kBackLeftCANCoderID,  
-                                    "canivore");
+                                    "rio");
     }
 
     // Funcion para leer los inputs reales del robot

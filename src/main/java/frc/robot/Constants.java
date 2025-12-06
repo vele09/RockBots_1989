@@ -25,10 +25,10 @@ public final class Constants {
     public static final int kDriveMotorCurrentLimit = 60;
     public static final int kSteeringMotorCurrentLimit = 30;
     // Variables para offsetear el 0 de las llantas del swerve(steering angle encoders)
-    public static final double kFrontRightEncoderInitPos = -78.14; // -199.8633
-    public static final double kFrontLeftEncoderInitPos = -239.23;  //-214.0137
-    public static final double kBackRightEncoderInitPos = -148.4;  //-209.0039
-    public static final double kBackLeftEncoderInitPos = -20.3;  //-89.2968
+    public static final double kFrontRightEncoderInitPos = -350.5078; // -199.8633
+    public static final double kFrontLeftEncoderInitPos = -66.7968;  //-214.0137
+    public static final double kBackRightEncoderInitPos = -149.5898;  //-209.0039
+    public static final double kBackLeftEncoderInitPos = -349.8064;  //-89.2968
     // Variables con constantes de las ruedas
     public static final double kWheelRadius = 0.0508;
     public static final double kWheelTrack = 0.58;
@@ -37,19 +37,19 @@ public final class Constants {
     // Variables con el id del pigeon
     public static final int kPigeonID = 0;
     // Variables con los ids de los cancoders
-    public static final int kFrontRightCANCoderID = 2;
-    public static final int kFrontLeftCANCoderID = 1;
-    public static final int kBackRightCANCoderID = 3;
-    public static final int kBackLeftCANCoderID = 4;
+    public static final int kFrontRightCANCoderID = 0;
+    public static final int kFrontLeftCANCoderID = 2;
+    public static final int kBackRightCANCoderID = 1;
+    public static final int kBackLeftCANCoderID = 3;
     // Variables con los ids de los motores
-    public static final int kFrontRightDriveMotorID = 4;
-    public static final int kFrontRightSteeringMotorID = 3;
-    public static final int kFrontLeftDriveMotorID = 2;
-    public static final int kFrontLeftSteeringMotorID = 1;
-    public static final int kBackRightDriveMotorID = 6;
-    public static final int kBackRightSteeringMotorID = 5;
-    public static final int kBackLeftDriveMotorID = 8;
-    public static final int kBackLeftSteeringMotorID = 7;
+    public static final int kFrontRightDriveMotorID = 1;
+    public static final int kFrontRightSteeringMotorID = 2;
+    public static final int kFrontLeftDriveMotorID = 4;
+    public static final int kFrontLeftSteeringMotorID = 3;
+    public static final int kBackRightDriveMotorID = 7;
+    public static final int kBackRightSteeringMotorID = 8;
+    public static final int kBackLeftDriveMotorID = 5;
+    public static final int kBackLeftSteeringMotorID = 6;
     // Variable para indicar el numero de modulos de swerve en el robot
     public static int kNumberOfModules = 4;
     // Variables con las posiciones de los moduloes en metros
@@ -101,40 +101,16 @@ public final class Constants {
 
 
   // Constants for the elevator subsystem
-  public static class Elevator {
+  public static class Hanger {
     // Elevator motor Ids
     public static final int kElevatorMotor1ID = 10;  //Right
-    public static final int kElevatorMotor2ID = 11;  // Left
-    // Limit switches (io) channels
-    public static final int kForwardLimit1Channel = 3;
-    public static final int kForwardLimit2Channel = 1 ;
-    public static final int kReverseLimit1Channel = 0;
-    public static final int kReverseLimit2Channel = 2;
-    // Motor current limit
-    public static final int kMotorCurrentLimit = 60;
-    // Constantes para el PID del Elevator
-    public static final double kMotionProfileP= 0.06;
-    public static final double kMotionProfileI = 0;
-    public static final double kMotionProfileD = 0;
-    public static final double kMotionProfileMaxAccelerationUp= 1000;
-    public static final double kMotionProfileMaxVelocityUp= 400;
-    public static final double kMotionProfileMaxAccelerationDown= 250;
-    public static final double kMotionProfileMaxVelocityDown= 75;
-    public static final double kMotionProfilePeriod = 0.020;
-    // Constantes para establecer los límites del Elevator
-    public static final double kElevatorUpperLimit = 1.17;
-    public static final double kElevatorLowerLimit = 0;
-    // Error tolerance elevator motor rotations
-    public static final double kElevatorTolerance = 0.03;
-    // Variables para calcular la distancia del Elevator
-    public static final double kElevatorReduction = 5;
-    public static final double kElevatorDiameter = 0.0466;
+    
+
   }
 
   public static final class Intake {
 
-    public static final int kIntakeLiftID = 14;
-    public static final int kIntakeWheelsID = 17;
+    public static final int kIntakeLiftID = 61;
     
     // Sensores
     //public static final int KLimitSwitchChannel = 0; 
@@ -175,8 +151,8 @@ public final class Constants {
 
   public static class Shooter{
     // ids de los motores
-    public static final int kShooterLowMotorID = 15;
-    public static final int kShooterUpperMotorID = 16;
+    public static final int kShooterLowMotorID = 4;
+    public static final int kShooterUpperMotorID = 50;
     //TOF
     public static final int kTofSensorID = 5;
     public static final int kShooterSensor1ID = 0; 
@@ -188,29 +164,7 @@ public final class Constants {
 
   
 
-  public static class Hanger {
-    // Hanger motors Ids
-    public static final int kHangerMotor1ID = 18;
-    // Variables para calcular la distancia del escalador
-    public static final double kHangerReduction = 20;
-    // Hanger motion profile configuration
-    public static final double kP = 0.01;
-    public static final double kI = 0;
-    public static final double kD = 0;
-    // Limites de seguridad del hanger
-    public static final double kHangerForwardLimit = 11 * kHangerReduction;
-    public static final double kHangerReverseLimit = 0;
-    // Se declara el limite de corriente para los motores del escalador
-    public static final int kMotorCurrentLimit = 80;
-    // Hanger positions
-    public static final double kHangerStartPosition = 0;
-    public static final double kHangerDownPosition = 2.45 * kHangerReduction;
-    public static final double kHangerUpPosition = 9.5 * kHangerReduction;
-    // Error tolerance hanger mechanism in motor rotations
-    public static final double kHangerTolerance = 1;
-
-  }
-
+  
 
   public static class Simulation {
 

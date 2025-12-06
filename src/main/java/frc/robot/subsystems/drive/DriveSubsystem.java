@@ -23,8 +23,6 @@ import com.pathplanner.lib.path.Waypoint;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import frc.robot.commands.LazyCommandWrapper;
-import frc.robot.subsystems.leds.LedsSubsystem.Colors;
-import frc.robot.subsystems.leds.LedsSubsystem.Section;
 import lib.time.RobotTime;
 import lib.util.MotorUtil;
 import lib.util.Util;
