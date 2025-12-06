@@ -3,7 +3,6 @@ package frc.robot.subsystems.hanger;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
-import frc.robot.Constants.Hanger;
 
 public class HangerSubsystem extends SubsystemBase{
 

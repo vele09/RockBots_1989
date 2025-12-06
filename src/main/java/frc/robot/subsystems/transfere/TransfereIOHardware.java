@@ -12,7 +12,7 @@ public class TransfereIOHardware implements TransfereIO{
 
     public TransfereIOHardware() {
 
-        mini_NEO = new SparkMax(Constants.Intake.kmini_NEO_ID, MotorType.kBrushless);
+        mini_NEO = new SparkMax(Constants.Transfere.kmini_NEO_ID, MotorType.kBrushless);
     }
 
     public void writeOutputs(double output) {

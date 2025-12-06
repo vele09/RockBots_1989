@@ -17,7 +17,7 @@ public class TransfereSubsystem extends SubsystemBase{
     public Command comer_TransfereCommand() {
         return run(() -> {
             // Ruedas directas sin verificar zona segura
-            io.writeOutputs(-0.3);
+            io.writeOutputs(-0.5);
 
         })
         .finallyDo(interrupted -> {

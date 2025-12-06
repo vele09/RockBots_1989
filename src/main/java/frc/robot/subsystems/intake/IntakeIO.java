@@ -1,6 +1,5 @@
 package frc.robot.subsystems.intake;
 
-import frc.robot.Constants;
 
 public interface IntakeIO {
     class IntakeInputs {
