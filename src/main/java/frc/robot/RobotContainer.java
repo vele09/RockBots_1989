@@ -4,6 +4,9 @@ import frc.robot.controlboard.ControlBoard;
 import frc.robot.Constants.Hanger;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
+
+import java.util.concurrent.TransferQueue;
+
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -14,12 +17,21 @@ import frc.robot.subsystems.intake.IntakeSubsystem;
 import frc.robot.subsystems.shooter.ShooterIOHardware;
 import frc.robot.subsystems.shooter.ShooterIOSim;
 import frc.robot.subsystems.shooter.ShooterSubsystem;
+import frc.robot.subsystems.transfere.TransfereSubsystem;
 import frc.robot.subsystems.drive.DriveSubsystem;
 import frc.robot.subsystems.hanger.HangerIOHardware;
+import frc.robot.subsystems.hanger.HangerIOSim;
 import frc.robot.subsystems.hanger.HangerSubsystem;
 import frc.robot.subsystems.drive.DriveIO;
 import frc.robot.subsystems.drive.DriveIOHardware;
 import frc.robot.subsystems.drive.DriveIOSim;
+import frc.robot.subsystems.transfere.TransfereIO;
+import frc.robot.subsystems.transfere.TransfereIOHardware;
+import frc.robot.subsystems.transfere.TransfereIOSim;
+import frc.robot.subsystems.transfere.TransfereSubsystem;
+
+
+
 
 
 public class RobotContainer {
@@ -30,7 +42,9 @@ public class RobotContainer {
 
   private final ShooterSubsystem shooterSubsystem = buildShooterSubsystem();
 
-  private final HangerSubsystem hangerSubsystem = buildHangerSubsytem();
+  private final HangerSubsystem hangerSubsystem = buildHangerSubsystem();
+
+  private final TransfereSubsystem transfereSubsystem = buildTransfereSubsystem();
 
   private final ControlBoard controlBoard;
 
@@ -66,11 +80,19 @@ public class RobotContainer {
     }
   }
 
-  private ShooterSubsystem buildHangerSubsystem() {
+  private HangerSubsystem buildHangerSubsystem() {
     if (RobotBase.isSimulation()){
       return new HangerSubsystem(new HangerIOSim(), this);
     } else{
       return new HangerSubsystem(new HangerIOHardware(), this);
+    }
+  }
+
+  private TransfereSubsystem buildTransfereSubsystem() {
+    if (RobotBase.isSimulation()){
+      return new TransfereSubsystem(new TransfereIOSim(), this);
+    } else{
+      return new TransfereSubsystem(new TransfereIOHardware(), this);
     }
   }
 
@@ -86,8 +108,12 @@ public class RobotContainer {
     return shooterSubsystem;
   }
 
-  public ShooterSubsystem gHangerSubsystem (){
+  public HangerSubsystem gHangerSubsystem (){
     return hangerSubsystem;
+  }
+
+  public TransfereSubsystem getTransfereSubsystem() {
+    return transfereSubsystem;
   }
   
   private void configureBindings() {
@@ -121,12 +147,16 @@ public class RobotContainer {
       intakeSubsystem.runWheelsUnsafeCommand()
     );
 
-    controlBoard.getPovLeft().whileTrue(
+    controlBoard.driverPovLeft().whileTrue(
       hangerSubsystem.runHangerCommand()
     );
 
-    controlBoard.getPovRight().whileTrue(
+    controlBoard.driverPovRight().whileTrue(
       hangerSubsystem.downHangerCommand()
+    );
+
+    controlBoard.driverRightBumper().whileTrue(
+      transfereSubsystem.comer_TransfereCommand()
     );
     
   }

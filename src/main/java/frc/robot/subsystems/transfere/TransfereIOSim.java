@@ -1,5 +1,5 @@
 package frc.robot.subsystems.transfere;
 
-public class TransfereIOSim {
+public class TransfereIOSim implements TransfereIO {
     
 }

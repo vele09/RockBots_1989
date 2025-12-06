@@ -1,5 +1,5 @@
 package frc.robot.subsystems.hanger;
 
-public class HangerIOSim {
+public class HangerIOSim implements HangerIO {
     
 }
